@@ -1,0 +1,32 @@
+<h1 class="text-center">Liste des produits</h1>
+
+<p-button label="Créer produit" (onClick)="onCreate()" class="block text-center"></p-button>
+
+<p-dataView [value]="products()">
+    <ng-template pTemplate="list" let-product>
+      <ng-container *ngFor="let product of products(); trackBy: trackById">
+        <p-card class="block mb-2">
+          <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
+          <div class="text-lg font-medium text-900 mt-2">{{ product.name }}</div>
+  
+          <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1">
+              <p-button label="Modifier" severity="secondary" (onClick)="onUpdate(product)"></p-button>
+            </div>
+          </ng-template>
+        </p-card>
+      </ng-container>
+    </ng-template>
+  </p-dataView>
+  
+  
+
+<p-dialog [(visible)]="isDialogVisible"
+          [style]="{ width: '50vw' }"
+          header="Ajout/Edition produit">
+  <app-product-form
+    [product]="editedProduct()"
+    (cancel)="onCancel()"
+  
+  ></app-product-form>
+</p-dialog>
