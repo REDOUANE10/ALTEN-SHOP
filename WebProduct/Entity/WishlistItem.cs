@@ -1,0 +1,15 @@
+﻿namespace WebProduct.Entity
+    {
+    public class WishlistItem
+        {
+
+        // a faire public DbSet<WishlistItem> WishlistItems { get; set; }
+        public int Id { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
+
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+        }
+    }
