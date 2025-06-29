@@ -27,6 +27,6 @@
   <app-product-form
     [product]="editedProduct()"
     (cancel)="onCancel()"
-  
+    (save)="onSave($event)"
   ></app-product-form>
 </p-dialog>

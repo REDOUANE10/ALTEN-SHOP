@@ -94,6 +94,8 @@ export class ProductFormComponent {
   }
 
   onSave() {
+    
     this.save.emit(this.editedProduct());
+
   }
 }

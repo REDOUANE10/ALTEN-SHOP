@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebProduct.Data.Migrations
+namespace Api_Store.Data.Migrations
 {
     /// <inheritdoc />
     public partial class UpdteUserlleMigration : Migration

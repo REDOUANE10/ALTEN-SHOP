@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebProduct.Data;
-using WebProduct.Interfaces;
-using WebProduct.Services;
+using Api_Store.Data;
+using Api_Store.Interfaces;
+using Api_Store.Services;
 
-namespace WebProduct.Extensions
+namespace Api_Store.Extensions
     {
     public static class ApplicationServiceExtensions
         {

@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Security.Claims;
-using WebProduct.Data;
-using WebProduct.Dtos;
-using WebProduct.Entity;
+using Api_Store.Data;
+using Api_Store.Dtos;
+using Api_Store.Entity;
 
-namespace WebProduct.Controllers
+namespace Api_Store.Controllers
     {
 
    // [Authorize]
@@ -16,33 +16,17 @@ namespace WebProduct.Controllers
     public class ProductController (DataContext _context) : ControllerBase
         {
         [HttpGet("/GetAllProduct")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProduct()
+        public async Task<ActionResult<IEnumerable<Product>>> GetAllProduct()
             {
-            var products = await _context.Product
-       .Select(p => new ProductDto
-           {
-          
-           Code = p.Code,
-           Name = p.Name,
-           Description = p.Description,
-           Image = p.Image,
-           Category = p.Category,
-           Price = p.Price,
-           Quantity = p.Quantity,
-           InternalReference = p.InternalReference,
-           ShellId = p.ShellId,
-           InventoryStatus = p.InventoryStatus,
-           Rating = p.Rating,
-           CreatedAt = p.CreatedAt,
-           UpdatedAt = p.UpdatedAt
-           }).ToListAsync();
+            var products = await _context.Product.ToListAsync();
+      
 
             return Ok(products);
 
             }
 
         [HttpPost("/CreerUnProduit")]
-           public async Task<ActionResult<ProductDto>> CreerP([FromBody]  ProductDto dto)
+           public async Task<ActionResult<Product>> CreerP([FromBody]  ProductDto dto)
             {
 
             if (GetUserEmail() != "admin@admin.com")
@@ -87,10 +71,11 @@ namespace WebProduct.Controllers
                 InventoryStatus = product.InventoryStatus,
                 Rating = product.Rating,
                 CreatedAt = product.CreatedAt,
-                UpdatedAt = product.UpdatedAt
+                UpdatedAt = product.UpdatedAt,
+                
                 };
 
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, createdDto);
+            return Ok(product);
             }
 
 
@@ -106,7 +91,7 @@ namespace WebProduct.Controllers
 
             return Ok(product);
             }
-
+        
 
 
         [HttpPut("/UpdateProduct/{id}")]
@@ -119,24 +104,34 @@ namespace WebProduct.Controllers
             if (product == null)
                 return NotFound();
 
-            // Mise à jour des propriétés depuis le DTO
-            product.Code = dto.Code;
-            product.Name = dto.Name;
-            product.Description = dto.Description;
-            product.Image = dto.Image;
-            product.Category = dto.Category;
-            product.Price = dto.Price;
-            product.Quantity = dto.Quantity;
-            product.InternalReference = dto.InternalReference;
-            product.ShellId = dto.ShellId;
-            product.InventoryStatus = dto.InventoryStatus;
-            product.Rating = dto.Rating;
+            try
+                {
+                // Mise à jour des propriétés depuis le DTO
+                product.Code = dto.Code;
+                product.Name = dto.Name;
+                product.Description = dto.Description;
+                product.Image = dto.Image;
+                product.Category = dto.Category;
+                product.Price = dto.Price;
+                product.Quantity = dto.Quantity;
+                product.InternalReference = dto.InternalReference;
+                product.ShellId = dto.ShellId;
+                product.InventoryStatus = dto.InventoryStatus;
+                product.Rating = dto.Rating;
 
-            // On ne touche pas à CreatedAt, mais on met à jour UpdatedAt
-            product.UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                // On ne touche pas à CreatedAt, mais on met à jour UpdatedAt
+                product.UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-            await _context.SaveChangesAsync();
-            return NoContent();
+                await _context.SaveChangesAsync();
+
+                }
+            catch (Exception ex)
+                {
+
+                return BadRequest(ex.Message);
+                }
+         
+            return Ok(true);
             }
 
         [HttpDelete("/SupprimerUnProduct/{id}")]

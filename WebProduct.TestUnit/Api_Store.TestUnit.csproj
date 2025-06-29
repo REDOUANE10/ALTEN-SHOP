@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebProduct\WebProduct.csproj" />
+    <ProjectReference Include="..\WebProduct\Api_Store.csproj" />
   </ItemGroup>
 
 </Project>

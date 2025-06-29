@@ -1,6 +1,6 @@
-﻿using WebProduct.Entity;
+﻿using Api_Store.Entity;
 
-namespace WebProduct.Interfaces
+namespace Api_Store.Interfaces
     {
     public interface ITokenService
         {

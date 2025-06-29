@@ -1,6 +1,6 @@
-﻿using WebProduct.Enum;
+﻿using Api_Store.Enum;
 
-namespace WebProduct.Entity
+namespace Api_Store.Entity
     {
     public class Product
         {

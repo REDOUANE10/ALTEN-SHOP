@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System;
-using WebProduct.Entity;
-using WebProduct.Data;
+using Api_Store.Entity;
+using Api_Store.Data;
 using Microsoft.EntityFrameworkCore;
-using WebProduct.Dtos;
+using Api_Store.Dtos;
 
-namespace WebProduct.Controllers
+namespace Api_Store.Controllers
     {
     [ApiController]
    // [Route("api/cart")]

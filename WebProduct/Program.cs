@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using WebProduct.Extensions;
+using Api_Store.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

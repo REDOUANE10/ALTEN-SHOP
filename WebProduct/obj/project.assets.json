@@ -9268,11 +9268,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj",
-      "projectName": "WebProduct",
-      "projectPath": "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj",
+      "projectUniqueName": "C:\\Livraisons\\WebProduct\\WebProduct\\Api_Store.csproj",
+      "projectName": "Api_Store",
+      "projectPath": "C:\\Livraisons\\WebProduct\\WebProduct\\Api_Store.csproj",
       "packagesPath": "C:\\Users\\boudj\\.nuget\\packages\\",
-      "outputPath": "C:\\MyProjetcs\\WebProduct\\WebProduct\\obj\\",
+      "outputPath": "C:\\Livraisons\\WebProduct\\WebProduct\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

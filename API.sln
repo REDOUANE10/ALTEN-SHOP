@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebProduct", "WebProduct\WebProduct.csproj", "{9F4A53B7-B5E1-47CC-8113-41EB4A79F940}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api_Store", "WebProduct\Api_Store.csproj", "{9F4A53B7-B5E1-47CC-8113-41EB4A79F940}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebProduct.TestUnit", "WebProduct.TestUnit\WebProduct.TestUnit.csproj", "{5918B5EC-A1E8-4E46-9F58-FAEC917DB676}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api_Store.TestUnit", "WebProduct.TestUnit\Api_Store.TestUnit.csproj", "{5918B5EC-A1E8-4E46-9F58-FAEC917DB676}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

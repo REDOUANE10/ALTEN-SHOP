@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hXT+AuUWR20=",
+  "dgSpecHash": "WusXpGS1/64=",
   "success": true,
-  "projectFilePath": "C:\\MyProjetcs\\WebProduct\\WebProduct.TestUnit\\WebProduct.TestUnit.csproj",
+  "projectFilePath": "C:\\Livraisons\\WebProduct\\WebProduct.TestUnit\\Api_Store.TestUnit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boudj\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\boudj\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

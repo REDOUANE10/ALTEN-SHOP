@@ -56,6 +56,8 @@ export class ProductListComponent implements OnInit {
     this.isCreation = false;
     this.isDialogVisible = true;
     this.editedProduct.set(product);
+    console.log(product);
+    console.log(this.editedProduct);
   }
   trackById(index: number, product: Product): number {
     return product.id;
@@ -66,14 +68,17 @@ export class ProductListComponent implements OnInit {
   //   this.productsService.delete(product.id).subscribe();
   // }
 
-  // public onSave(product: Product) {
-  //   if (this.isCreation) {
-  //     this.productsService.create(product).subscribe();
-  //   } else {
-  //     this.productsService.update(product).subscribe();
-  //   }
-  //   this.closeDialog();
-  // }
+  public async onSave(product: Product) {
+    
+    const loginResult= await this.productsService.login();
+    if (this.isCreation) {
+      
+      this.productsService.create(product).subscribe();
+    } else {
+      this.productsService.update(product).subscribe();
+    }
+    this.closeDialog();
+  }
 
   public onCancel() {
     this.closeDialog();

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebProduct.Entity;
+using Api_Store.Entity;
 
-namespace WebProduct.Data
+namespace Api_Store.Data
     {
     public class DataContext: DbContext
         {

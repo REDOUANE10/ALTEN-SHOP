@@ -1,4 +1,4 @@
-﻿namespace WebProduct.Entity
+﻿namespace Api_Store.Entity
     {
     public class User
         {

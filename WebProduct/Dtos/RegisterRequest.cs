@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebProduct.Dtos
+namespace Api_Store.Dtos
     {
     public class RegisterDto
         {

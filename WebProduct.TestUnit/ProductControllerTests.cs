@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using WebProduct.Data;
-using WebProduct.Entity;
-using WebProduct.Controllers;
-using WebProduct.Enum;
+using Api_Store.Data;
+using Api_Store.Entity;
+using Api_Store.Controllers;
+using Api_Store.Enum;
 
-namespace WebProduct.TestUnit
+namespace Api_Store.TestUnit
     {
     public class ProductControllerTests
         {

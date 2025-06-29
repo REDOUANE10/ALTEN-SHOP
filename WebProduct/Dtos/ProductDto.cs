@@ -1,6 +1,6 @@
-﻿using WebProduct.Enum;
+﻿using Api_Store.Enum;
 
-namespace WebProduct.Dtos
+namespace Api_Store.Dtos
     {
     public class ProductDto
         {

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebProduct.Data;
+using Api_Store.Data;
 
 #nullable disable
 
-namespace WebProduct.Data.Migrations
+namespace Api_Store.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20250626094038_NomDeTaNouvelleMigration")]
@@ -24,7 +24,7 @@ namespace WebProduct.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebProduct.Entity.CartItem", b =>
+            modelBuilder.Entity("Api_Store.Entity.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace WebProduct.Data.Migrations
                     b.ToTable("CartItem");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.Product", b =>
+            modelBuilder.Entity("Api_Store.Entity.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,7 +114,7 @@ namespace WebProduct.Data.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.User", b =>
+            modelBuilder.Entity("Api_Store.Entity.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace WebProduct.Data.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.WishlistItem", b =>
+            modelBuilder.Entity("Api_Store.Entity.WishlistItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,15 +170,15 @@ namespace WebProduct.Data.Migrations
                     b.ToTable("WishlistItem");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.CartItem", b =>
+            modelBuilder.Entity("Api_Store.Entity.CartItem", b =>
                 {
-                    b.HasOne("WebProduct.Entity.Product", "Product")
+                    b.HasOne("Api_Store.Entity.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebProduct.Entity.User", "User")
+                    b.HasOne("Api_Store.Entity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -189,9 +189,9 @@ namespace WebProduct.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.Product", b =>
+            modelBuilder.Entity("Api_Store.Entity.Product", b =>
                 {
-                    b.HasOne("WebProduct.Entity.User", "User")
+                    b.HasOne("Api_Store.Entity.User", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -200,15 +200,15 @@ namespace WebProduct.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.WishlistItem", b =>
+            modelBuilder.Entity("Api_Store.Entity.WishlistItem", b =>
                 {
-                    b.HasOne("WebProduct.Entity.Product", "Product")
+                    b.HasOne("Api_Store.Entity.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebProduct.Entity.User", "User")
+                    b.HasOne("Api_Store.Entity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -219,7 +219,7 @@ namespace WebProduct.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebProduct.Entity.User", b =>
+            modelBuilder.Entity("Api_Store.Entity.User", b =>
                 {
                     b.Navigation("Products");
                 });

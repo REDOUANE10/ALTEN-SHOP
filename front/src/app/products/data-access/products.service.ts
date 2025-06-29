@@ -1,7 +1,8 @@
 import { Injectable, inject, signal } from "@angular/core";
 import { Product } from "./product.model";
 import { HttpClient } from "@angular/common/http";
-import { catchError, Observable, of, tap } from "rxjs";
+import { catchError, firstValueFrom, Observable, of, tap } from "rxjs";
+import { environment } from "environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -9,9 +10,9 @@ import { catchError, Observable, of, tap } from "rxjs";
 export class ProductsService {
 
   private readonly http = inject(HttpClient);
-  private readonly path = "https://localhost:7154/";
+  private readonly path = environment.API
 
-  private readonly _products = signal<Product[]>([]);
+  private _products = signal<Product[]>([]);
   public readonly products = this._products.asReadonly();
 
   public get(): Observable<Product[]> {
@@ -24,24 +25,64 @@ export class ProductsService {
     );
   }
 
-  public create(product: Product): Observable<boolean> {
-    return this.http.post<boolean>(`${this.path}CreerUnProduit`, product).pipe(
-      tap(success => {
-        if (success) {
-          this._products.update(products => [product, ...products]);
+ async login(): Promise<any> {
+    const dataUser = {
+      Email: 'Admin@admin.com',
+      Password: 'MotDePasseSecurise1234'
+    };
+ 
+    try {
+      const result = await firstValueFrom(
+        this.http.post<any>(`${this.path}token`, dataUser).pipe(
+          tap(success => {
+            if (success) {
+              localStorage.setItem('user', JSON.stringify(success));
+            }
+          }),
+          catchError(error => {
+            console.error('Erreur lors de la création du produit:', error);
+            return of(false);
+          })
+        )
+      );
+ 
+      return result;
+    } catch (error) {
+      console.error('Error en login:', error);
+      return null;
+    }
+  }
+  public create(product: Product): Observable<Product|null> {
+    
+   const token = JSON.parse(localStorage.getItem('user') || '{}')?.token;
+   const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
+    return this.http.post<Product>(`${this.path}CreerUnProduit`, product, {headers}).pipe(
+      tap(newProduct => {
+        if (newProduct) {
+          
+          this._products.update(products => [newProduct, ...products]);
         }
       }),
       catchError(error => {
         console.error("Erreur lors de la création du produit :", error);
-        return of(false);
+        return of(null);
       })
     );
   }
 
+
   public update(product: Product): Observable<boolean> {
-    return this.http.patch<boolean>(`${this.path}UpdateProduct/${product.id}`, product).pipe(
+    const token = JSON.parse(localStorage.getItem('user') || '{}')?.token;
+   const headers = {
+    Authorization: `Bearer ${token}`
+  };
+    return this.http.put<boolean>(`${this.path}UpdateProduct/${product.id}`, product,{headers}).pipe(
       tap(success => {
         if (success) {
+          
           this._products.update(products =>
             products.map(p => p.id === product.id ? product : p)
           );

@@ -3,7 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace WebProduct.Extensions
+namespace Api_Store.Extensions
     {
     public static class IdentityServiceExtensions
         {

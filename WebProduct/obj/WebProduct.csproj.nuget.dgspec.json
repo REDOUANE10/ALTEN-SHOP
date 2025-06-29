@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj": {}
+    "C:\\Livraisons\\WebProduct\\WebProduct\\WebProduct.csproj": {}
   },
   "projects": {
-    "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj": {
+    "C:\\Livraisons\\WebProduct\\WebProduct\\WebProduct.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj",
+        "projectUniqueName": "C:\\Livraisons\\WebProduct\\WebProduct\\WebProduct.csproj",
         "projectName": "WebProduct",
-        "projectPath": "C:\\MyProjetcs\\WebProduct\\WebProduct\\WebProduct.csproj",
+        "projectPath": "C:\\Livraisons\\WebProduct\\WebProduct\\WebProduct.csproj",
         "packagesPath": "C:\\Users\\boudj\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProjetcs\\WebProduct\\WebProduct\\obj\\",
+        "outputPath": "C:\\Livraisons\\WebProduct\\WebProduct\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "WebProduct.Controllers.AccountController",
+    "ContainingType": "Api_Store.Controllers.AccountController",
     "Method": "Register",
     "RelativePath": "account",
     "HttpMethod": "POST",
@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "registerDto",
-        "Type": "WebProduct.Dtos.RegisterDto",
+        "Type": "Api_Store.Dtos.RegisterDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "WebProduct.Dtos.UserDto",
+        "Type": "Api_Store.Dtos.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.CartController",
+    "ContainingType": "Api_Store.Controllers.CartController",
     "Method": "AddToCart",
     "RelativePath": "AjouterAuPanier",
     "HttpMethod": "POST",
@@ -35,14 +35,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "WebProduct.Dtos.AddToCartRequest",
+        "Type": "Api_Store.Dtos.AddToCartRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.WishlistController",
+    "ContainingType": "Api_Store.Controllers.WishlistController",
     "Method": "GetWishlist",
     "RelativePath": "api/wishlist",
     "HttpMethod": "GET",
@@ -51,7 +51,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebProduct.Entity.WishlistItem, WebProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Api_Store.Entity.WishlistItem, Api_Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.WishlistController",
+    "ContainingType": "Api_Store.Controllers.WishlistController",
     "Method": "AddToWishlist",
     "RelativePath": "api/wishlist",
     "HttpMethod": "POST",
@@ -71,14 +71,14 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "WebProduct.Entity.AddToWishlistRequest",
+        "Type": "Api_Store.Entity.AddToWishlistRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.WishlistController",
+    "ContainingType": "Api_Store.Controllers.WishlistController",
     "Method": "RemoveFromWishlist",
     "RelativePath": "api/wishlist/{productId}",
     "HttpMethod": "DELETE",
@@ -94,7 +94,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.CartController",
+    "ContainingType": "Api_Store.Controllers.CartController",
     "Method": "RemoveFromCart",
     "RelativePath": "car/Supprimer/{productId}",
     "HttpMethod": "DELETE",
@@ -110,7 +110,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.ProductController",
+    "ContainingType": "Api_Store.Controllers.ProductController",
     "Method": "CreerP",
     "RelativePath": "CreerUnProduit",
     "HttpMethod": "POST",
@@ -119,13 +119,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "WebProduct.Dtos.ProductDto",
+        "Type": "Api_Store.Dtos.ProductDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "WebProduct.Dtos.ProductDto",
+        "Type": "Api_Store.Entity.Product",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.ProductController",
+    "ContainingType": "Api_Store.Controllers.ProductController",
     "Method": "GetAllProduct",
     "RelativePath": "GetAllProduct",
     "HttpMethod": "GET",
@@ -145,7 +145,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebProduct.Dtos.ProductDto, WebProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Api_Store.Entity.Product, Api_Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -156,7 +156,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.ProductController",
+    "ContainingType": "Api_Store.Controllers.ProductController",
     "Method": "GetProductById",
     "RelativePath": "GetProductById/{id}",
     "HttpMethod": "GET",
@@ -171,7 +171,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "WebProduct.Entity.Product",
+        "Type": "Api_Store.Entity.Product",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -182,7 +182,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.ProductController",
+    "ContainingType": "Api_Store.Controllers.ProductController",
     "Method": "DeleteProduct",
     "RelativePath": "SupprimerUnProduct/{id}",
     "HttpMethod": "DELETE",
@@ -198,7 +198,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.AccountController",
+    "ContainingType": "Api_Store.Controllers.AccountController",
     "Method": "Login",
     "RelativePath": "token",
     "HttpMethod": "POST",
@@ -207,13 +207,13 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "WebProduct.Dtos.LoginDto",
+        "Type": "Api_Store.Dtos.LoginDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "WebProduct.Dtos.UserDto",
+        "Type": "Api_Store.Dtos.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -224,7 +224,7 @@
     ]
   },
   {
-    "ContainingType": "WebProduct.Controllers.ProductController",
+    "ContainingType": "Api_Store.Controllers.ProductController",
     "Method": "UpdateProduct",
     "RelativePath": "UpdateProduct/{id}",
     "HttpMethod": "PUT",
@@ -238,14 +238,14 @@
       },
       {
         "Name": "dto",
-        "Type": "WebProduct.Dtos.ProductDto",
+        "Type": "Api_Store.Dtos.ProductDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebProduct.Controllers.WeatherForecastController",
+    "ContainingType": "Api_Store.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
     "HttpMethod": "GET",
@@ -254,7 +254,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebProduct.WeatherForecast, WebProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Api_Store.WeatherForecast, Api_Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

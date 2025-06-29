@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System;
-using WebProduct.Entity;
-using WebProduct.Data;
+using Api_Store.Entity;
+using Api_Store.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebProduct.Controllers
+namespace Api_Store.Controllers
     {
     [ApiController]
     [Route("api/wishlist")]

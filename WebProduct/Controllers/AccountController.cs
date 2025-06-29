@@ -5,14 +5,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using WebProduct.Data;
-using WebProduct.Dtos;
-using WebProduct.Entity;
-using WebProduct.Interfaces;
+using Api_Store.Data;
+using Api_Store.Dtos;
+using Api_Store.Entity;
+using Api_Store.Interfaces;
 
 
 
-namespace WebProduct.Controllers
+namespace Api_Store.Controllers
     {
     public class AccountController(DataContext _context, ITokenService _tokenService) : ControllerBase
         {

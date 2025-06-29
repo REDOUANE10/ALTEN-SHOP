@@ -1,4 +1,4 @@
-﻿namespace WebProduct.Enum
+﻿namespace Api_Store.Enum
     {
     public enum  InventoryStatus
         {
