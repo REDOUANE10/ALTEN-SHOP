@@ -10,7 +10,7 @@ using Api_Store.Entity;
 namespace Api_Store.Controllers
     {
 
-   // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProductController (DataContext _context) : ControllerBase
