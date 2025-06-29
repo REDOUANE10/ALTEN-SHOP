@@ -13,6 +13,16 @@ namespace Api_Store.TestUnit
     {
     public class ProductControllerTests
         {
+
+        private DbContextOptions<DataContext> _options;
+
+        public ProductControllerTests()
+            {
+            // Utilise la base de données en mémoire pour simuler les opérations EF Core
+            _options = new DbContextOptionsBuilder<DataContext>()
+                            .UseInMemoryDatabase(databaseName: "TestDb")
+                            .Options;
+            }
         [Fact]
         public async Task DeleteProduct_AdminUser_ProductDeleted_ReturnsNoContent()
             {
@@ -79,5 +89,35 @@ namespace Api_Store.TestUnit
                 Assert.Null(await context.Product.FindAsync(productId));
                 }
             }
+
+        [Fact]
+        public async Task GetAllProduct_ReturnsListOfProducts()
+            {
+            // Arrange
+            using (var context = new DataContext(_options))
+                {
+                // Nettoyer la DB en mémoire pour éviter les conflits
+                context.Product.RemoveRange(context.Product);
+                await context.SaveChangesAsync();
+
+                context.Product.AddRange(
+                    new Product { Id = 13, Name = "Product 1", Category= "Fitness", Code="fr", Image= "black-watch.jpg", InternalReference= "REF-123-459", Description= "Test2 Test2" },
+                    new Product { Id = 14, Name = "Product 2", Category = "Fitness", Code = "fr", Image = "black-watch.jpg", InternalReference = "REF-123-459", Description = "Test3 Test3" }
+                );
+                await context.SaveChangesAsync();
+
+                var controller = new ProductController(context);
+
+                // Act
+                var result = await controller.GetAllProduct();
+
+                // Assert
+                var okResult = Assert.IsType<OkObjectResult>(result.Result);
+                var returnProducts = Assert.IsAssignableFrom<IEnumerable<Product>>(okResult.Value);
+                Assert.Equal(2, returnProducts.Count());
+                }
+            }
         }
     }
+
+
