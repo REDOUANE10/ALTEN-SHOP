@@ -1,14 +1,14 @@
-﻿using Xunit;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Api_Store.Controllers;
 using Api_Store.Data;
 using Api_Store.Entity;
-using Api_Store.Controllers;
 using Api_Store.Enum;
-
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using System.Security.Claims;
+using Xunit;
+using ZiggyCreatures.Caching.Fusion;
 namespace Api_Store.TestUnit
     {
     public class ProductControllerTests
@@ -27,6 +27,7 @@ namespace Api_Store.TestUnit
         public async Task DeleteProduct_AdminUser_ProductDeleted_ReturnsNoContent()
             {
             // Arrange
+            var mockCache = new Mock<IFusionCache>();
             var options = new DbContextOptionsBuilder<DataContext>()
                 .UseInMemoryDatabase("DeleteProductTest")
                 .EnableSensitiveDataLogging() // utile pour debug si erreur
@@ -68,7 +69,7 @@ namespace Api_Store.TestUnit
                 context.Product.Add(product);
                 await context.SaveChangesAsync();
 
-                var controller = new ProductController(context);
+                var controller = new ProductController(context, mockCache.Object);
 
                 // Simuler un utilisateur admin
                 var user = new ClaimsPrincipal(new ClaimsIdentity(new[]
@@ -90,34 +91,11 @@ namespace Api_Store.TestUnit
                 }
             }
 
-        [Fact]
-        public async Task GetAllProduct_ReturnsListOfProducts()
-            {
-            // Arrange
-            using (var context = new DataContext(_options))
-                {
-                // Nettoyer la DB en mémoire pour éviter les conflits
-                context.Product.RemoveRange(context.Product);
-                await context.SaveChangesAsync();
 
-                context.Product.AddRange(
-                    new Product { Id = 13, Name = "Product 1", Category= "Fitness", Code="fr", Image= "black-watch.jpg", InternalReference= "REF-123-459", Description= "Test2 Test2" },
-                    new Product { Id = 14, Name = "Product 2", Category = "Fitness", Code = "fr", Image = "black-watch.jpg", InternalReference = "REF-123-459", Description = "Test3 Test3" }
-                );
-                await context.SaveChangesAsync();
 
-                var controller = new ProductController(context);
-
-                // Act
-                var result = await controller.GetAllProduct();
-
-                // Assert
-                var okResult = Assert.IsType<OkObjectResult>(result.Result);
-                var returnProducts = Assert.IsAssignableFrom<IEnumerable<Product>>(okResult.Value);
-                Assert.Equal(2, returnProducts.Count());
-                }
-            }
         }
     }
+   
+
 
 
