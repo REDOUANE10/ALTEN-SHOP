@@ -17,9 +17,7 @@ namespace Api_Store.Controllers
     [Route("[controller]")]
     public class ProductController(DataContext _context, IFusionCache _cache)  : ControllerBase
         {
-      
-
-
+    
         [HttpGet("/GetAllProduct")]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProduct()
             {

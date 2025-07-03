@@ -8,7 +8,7 @@ namespace Api_Store.Extensions
 
         public static IHostApplicationBuilder AddCache(this IHostApplicationBuilder builder)
             {
-            //   Log.Debug("Builder: {Builder}", "AddCache");
+          
 
             //   builder.Services.AddScoped<ICacheRegistry, CacheRegistry>();
             var cacheBuider = builder.Services.AddFusionCache()

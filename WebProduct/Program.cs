@@ -41,11 +41,6 @@ try
 
     var app = builder.Build();
     app.UseMiddleware<LogEnrichMiddleware>();
-
-
-
-   
-
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
         {
