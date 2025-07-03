@@ -1,10 +1,12 @@
 using System.Text.Json.Serialization;
 using Api_Store.Extensions;
+using Api_Store.Log;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
+
 try
-	{
+    {
     builder.Services
 
      .AddControllers()
@@ -25,6 +27,7 @@ try
 
     builder.Services.AddOpenApi();
     builder.Services.AddSwaggerGen();
+    builder.AddCache();
     builder.Services.AddCors(options =>
     {
         options.AddDefaultPolicy(builder =>
@@ -34,13 +37,20 @@ try
                    .AllowAnyMethod();
         });
     });
+  
+
     var app = builder.Build();
+    app.UseMiddleware<LogEnrichMiddleware>();
+
+
+
+   
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
         {
-        app.UseDeveloperExceptionPage();
-        
+      
+
         app.MapOpenApi();
         app.UseSwagger();
         app.UseSwaggerUI();
@@ -49,6 +59,8 @@ try
     app.UseHttpsRedirection();
   
     app.UseCors();
+  
+
     app.UseAuthorization();
 
     app.MapControllers();

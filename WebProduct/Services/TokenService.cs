@@ -22,7 +22,9 @@ namespace Api_Store.Services
           //  new Claim(JwtRegisteredClaimNames.NameId, user.Username)
            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
         new Claim(ClaimTypes.Name, user.Username), // facultatif mais souvent utile
-        new Claim(ClaimTypes.Email, user.Email)
+        new Claim(ClaimTypes.Email, user.Email),
+     //   new Claim(ClaimTypes.Role, user.Role) // par exemple "Admin"Si tu stockes les rôles dans ta base de données, tu dois récupérer le rôle de l'utilisateur avant de générer le token.
+
                       };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

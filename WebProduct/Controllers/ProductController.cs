@@ -6,23 +6,33 @@ using System.Security.Claims;
 using Api_Store.Data;
 using Api_Store.Dtos;
 using Api_Store.Entity;
+using ZiggyCreatures.Caching.Fusion;
+
 
 namespace Api_Store.Controllers
     {
 
-    [Authorize]
+   //  [Authorize(Roles = "admin")]
     [ApiController]
     [Route("[controller]")]
-    public class ProductController (DataContext _context) : ControllerBase
+    public class ProductController(DataContext _context, IFusionCache _cache)  : ControllerBase
         {
+      
+
+
         [HttpGet("/GetAllProduct")]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProduct()
             {
-            var products = await _context.Product.ToListAsync();
-      
+            var products = await _cache.GetOrSetAsync(
+                "products_all",
+                async _ =>
+                {
+                    Console.WriteLine("📦 Cache MISS → chargement depuis la base...");
+                    return await _context.Product.ToListAsync();
+                }
+            );
 
             return Ok(products);
-
             }
 
         [HttpPost("/CreerUnProduit")]
